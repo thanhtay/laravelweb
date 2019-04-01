@@ -50,3 +50,5 @@ Route::group(['prefix' => 'group'], function () {
         return "Welcome Team 2";
     });
 });
+
+Route::get('site', 'SiteController@index');
