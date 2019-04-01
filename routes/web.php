@@ -51,4 +51,12 @@ Route::group(['prefix' => 'group'], function () {
     });
 });
 
-Route::get('site', 'SiteController@index');
+Route::group(['prefix' => 'site'], function () {
+    Route::get('/', 'SiteController@index');
+    Route::get('read', 'SiteController@read');
+    Route::get('about', 'SiteController@about');
+
+    Route::match(['get','post'], 'contact', 'SiteController@contact')->name('siteContact');
+
+    Route::get('site/{id}', 'SiteController@index');
+});
