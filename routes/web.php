@@ -15,10 +15,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/abc', function () {
-    return 'welcome abc';
-});
-
 
 Route::get('post', [
     'as' => 'My Post',
@@ -60,3 +56,7 @@ Route::group(['prefix' => 'site'], function () {
 
     Route::get('site/{id}', 'SiteController@index');
 });
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
