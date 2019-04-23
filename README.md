@@ -16,3 +16,27 @@
         }
 - Module
     nwidart/laravel-modules
+- Auth
+    + Auth::routes()
+        - path : D:\host\www\php\laravelweb\vendor\laravel\framework\src\Illuminate\Routing\Router.php
+    + Modify password_resets
+        - Create a class extends Illuminate\Auth\Passwords\DatabaseTokenRepository name App\Http\Controllers\Auth\TDatabaseTokenRepository;
+        - Overwrite getPayload()
+        - Create a class extends Illuminate\Auth\Passwords\PasswordBrokerManager name App\Http\Controllers\Auth\Passwords\TPasswordBrokerManager
+        - Overwrite createTokenRepository() with TDatabaseTokenRepository();
+        - Comment out PasswordResetServiceProvider in config/app.php
+        - Create a provider
+            + php artisan make:provider TPasswordResetServiceProvider;
+            + define App\Providers\ComposerServiceProvider::class in config/app.php
+            + php artisan config:cache
+- Mail (using gmail)
+    + Create gmail
+    + .env
+        APP_URL=http://hoctap.com
+        MAIL_DRIVER=smtp
+        MAIL_HOST=smtp.gmail.com
+        MAIL_PORT=465
+        MAIL_USERNAME=thanhtaytest90@gmail.com
+        MAIL_PASSWORD=thanhtay78
+        MAIL_ENCRYPTION=ssl
+    + php artisan config:cache
