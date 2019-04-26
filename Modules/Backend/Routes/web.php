@@ -11,7 +11,11 @@
 |
 */
 
-Route::prefix('backend')->group(function() {
+// Route::prefix('admin')->group(function() {
+//     Route::get('/', 'BackendController@index');
+//     Route::get('/store', 'BackendController@store');
+// })->middleware('admin');
+Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function() {
     Route::get('/', 'BackendController@index');
     Route::get('/store', 'BackendController@store');
 });
