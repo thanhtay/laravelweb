@@ -18,5 +18,6 @@
 
     php artisan migrate --path=/database/migrations/2019_04_24_041055_create_admin_roles_table.php
 - Using seeding
+    php artisan make:seeder UsersTableSeeder // create
     php artisan db:seed
     php artisan db:seed --class=UsersTableSeeder

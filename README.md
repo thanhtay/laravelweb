@@ -18,6 +18,7 @@
         }
 - Module for backend
     nwidart/laravel-modules
+        Reading document :"https://nwidart.com/laravel-modules/v4/introduction"
 - Auth
     + Auth::routes()
         - path : D:\host\www\php\laravelweb\vendor\laravel\framework\src\Illuminate\Routing\Router.php
@@ -47,6 +48,7 @@
     + create admin_roles table
     + create admin_roles_map table
     + create Admin.php for Middleware
+        https://appdividend.com/2017/07/18/laravel-5-middleware-tutorial/
         * /**
             * Get the path the user should be redirected to when they are not authenticated.
             *
@@ -80,3 +82,28 @@
             }
 
         Function validate password: password_verify($value, $hashedValue);
+
+    + Using middleware in modules
+        Modules\Backend\Providers\BackendServiceProvider in boot()
+        $this->app->make('router')->aliasMiddleware('admin', \Modules\Backend\Http\Middleware\Admin::class);
+- Login System
+	When system get value of user login from database and validate success by request
+		+ Illuminate\Auth\SessionGuard: updateSession
+			Array
+			(
+				...
+				[login_web_59ba36addc2b2f9401580f014c7f58ea4e30989d] => 1
+			)
+			
+		+ Request sent
+			system Illuminate\Cookie\MiddlewareEncryptCookies
+					getJsonPayload($payload) : $payload = json_decode(base64_decode($payload), true);
+						"eyJpdiI6ImNQNWRUdWNPbjlcLysyUkx6aXJvTlhRPT0iLCJ2YWx1ZSI6IkhxT0FFXC9zU3crZnFPZkF2WU9mOXFHMGI4RVJFTVA3MHZDXC9KaWxkdHFLYVhjbldJeTdHR1wvR3hMYWcyMTlyeVQiLCJtYWMiOiJkZWFlM2VhZDU2ZDYwNDFlZWM5MDE1ODg1NDE5Mjc4NjRiODVkOTdmMzQwMGM1OWFkZTBmOGNjMTVjOGJjM2JjIn0="
+						-> iv : cP5dTucOn9/+2RLziroNXQ==
+						-> value:"HqOAE/sSw+fqOfAvYOf9qG0b8EREMP70vC/JildtqKaXcnWIy7GG/GxLag219ryT"
+						-> mac: deae3ead56d6041eec901588541927864b85d97f3400c59ade0f8cc15c8bc3bc
+						
+						$decrypted = \openssl_decrypt(
+							$payload['value'], $this->cipher, $this->key, 0, $iv
+						); a7CuYbkB4irKAwiFAbpJeYsEQmupfXqwTO10BIyv this is name of session file
+						

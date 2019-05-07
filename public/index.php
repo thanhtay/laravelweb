@@ -19,6 +19,12 @@ function v($string)
 {
     var_dump($string);
 }
+
+function vv($string)
+{
+    var_dump($string);
+    die;
+}
 /**
  * Laravel - A PHP Framework For Web Artisans
  *

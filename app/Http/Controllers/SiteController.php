@@ -6,23 +6,9 @@ use Illuminate\Http\Request;
 
 class SiteController extends Controller
 {
-    public function index($id)
+    public function index()
     {
-        print_r($_GET);
-        print_r($id);
-        return "Site Index";
-    }
-
-    public function read()
-    {
-        $request = new Request();
-        d($request->method());
-        v($request->isMethod('get'));
-        d($request->input());
-        d($request->query());
-        d($request->filled('id'));
-        v($request->has('id'));
-        return "Site read";
+        return view('site/index');
     }
 
     public function about()
