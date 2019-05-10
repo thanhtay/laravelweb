@@ -1,9 +1,4 @@
-@extends('backend::layouts.master')
-
+@extends('backend::layouts.admin')
 @section('content')
-    <h1>Hello World</h1>
-
-    <p>
-        This view is loaded from module: {!! config('backend.name') !!}
-    </p>
-@stop
+    <h1>Admin page</h1>
+@endsection
