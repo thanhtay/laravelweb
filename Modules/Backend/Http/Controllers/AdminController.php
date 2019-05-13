@@ -5,6 +5,7 @@ namespace Modules\Backend\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
+use Modules\Backend\Http\Models\logic\UserAdminModel;
 
 class AdminController extends Controller
 {
@@ -34,7 +35,12 @@ class AdminController extends Controller
      */
     public function listAdmin()
     {
-        echo "This is list admin page. Welcome to super admin!";
+        $model = new UserAdminModel();
+        $listAdmin = $model->getListAdmin();
+        $data = [
+            'admins' => $listAdmin,
+        ];
+        return view('backend::admin.list_management', $data);
     }
 
     /**

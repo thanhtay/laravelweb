@@ -16,13 +16,13 @@
 //     Route::get('/store', 'BackendController@store');
 // })->middleware('admin');
 Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function() {
-    Route::get('/', 'AdminController@index');
-    Route::get('/list-user', 'UserController@listUser');
-    Route::get('/control-user', 'UserController@controlUser');
+    Route::get('/', 'AdminController@index')->name('admin.index');
+    Route::get('/list-user', 'AdminUserController@listUser')->name('userAdmin.listUser');
+    Route::get('/control-user', 'AdminUserController@controlUser')->name('userAdmin.controlUser');
 });
 
 Route::group(['prefix' => 'admin', 'middleware' => 'superAdmin'], function() {
-    Route::get('/create-admin', 'AdminController@createAdmin');
-    Route::get('/list-admin', 'AdminController@listAdmin');
-    Route::get('/control-admin', 'AdminController@controlAdmin');
+    Route::get('/create-admin', 'AdminController@createAdmin')->name('admin.createAdmin');
+    Route::get('/list-admin', 'AdminController@listAdmin')->name('admin.listAdmin');
+    Route::get('/control-admin', 'AdminController@controlAdmin')->name('admin.controlAdmin');
 });

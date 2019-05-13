@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
 
-class UserController extends Controller
+class AdminUserController extends Controller
 {
     /**
      * This action is used for admin
@@ -15,7 +15,7 @@ class UserController extends Controller
      */
     public function listUser()
     {
-        echo "List User Page";
+        return view('backend::user.list_management');
     }
 
     /**

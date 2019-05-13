@@ -22,15 +22,23 @@ li {
   list-style-type: none; 
 }
 @media (min-width: 320px) {
-  
+  .display-3 {
+    font-size: 1.5rem;
+  }
 }
 /* Small devices (landscape phones, 576px and up) */
 @media (min-width: 576px) {
-  
+  .display-3 {
+    font-size: 2.5rem;
+  }
 }
 
 /* Medium devices (tablets, 768px and up) */
-@media (min-width: 768px) {}
+@media (min-width: 768px) {
+  .display-3 {
+    font-size: 4.5rem;
+  }
+}
 
 /* Large devices (desktops, 992px and up) */
 @media (min-width: 992px) {}
@@ -38,9 +46,9 @@ li {
 /* Extra large devices (large desktops, 1200px and up) */
 @media (min-width: 1200px) {}
 
-/* .carousel-inner>.carousel-item {
+.carousel-inner>.carousel-item {
     max-height: 500px;
-}*/
+}
 
 .carousel-inner>.carousel-item::after {
     content: "";
