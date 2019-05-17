@@ -6,88 +6,83 @@
             <h2>List User</h2>
         </div>
     </div>
-    <form class="mb-3 px-4" action="">
-        <div class="row">
-            <div class="col-6">
-                <label for="inputEmail3" class="col-form-label">Name</label>
-                <input type="email" class="form-control" id="inputEmail3" placeholder="Name">
+
+    {{ Form::open(['method' => 'GET']) }}
+    <div class="row mb-3 px-4">
+        <div class="col-6">
+            {{ Form::label('name', 'Name') }}
+            {{ Form::text('name', $searchCondition->getName(), ['class' => 'form-control']) }}
+        </div>
+        <div class="col-6">
+            {{ Form::label('email', 'Email') }}
+            {{ Form::email('email', $searchCondition->getEmail(), ['class' => 'form-control']) }}
+        </div>
+        <div class="w-100 mt-3"></div>
+        <div class="col-6">
+            <div class="form-check d-inline">
+                {{ Form::radio(
+                    'isTeacher',
+                    1,
+                    $searchCondition->getIsTeacher() == 1 ? true : false,
+                    ['id' => 'teacher']
+                ) }}
+                {{ Form::label('teacher', 'Teacher') }}
             </div>
-            <div class="col-6">
-                <label for="inputEmail3" class="col-form-label">Email</label>
-                <input type="email" class="form-control" id="inputEmail3" placeholder="Email">
-            </div>
-            <div class="w-100 mt-3"></div>
-            <div class="col-6">
-                <div class="form-check d-inline">
-                    <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-                    <label class="form-check-label" for="defaultCheck1">
-                        Teacher
-                    </label>
-                </div>
-                <div class="form-check d-inline">
-                    <input class="form-check-input" type="checkbox" value="" id="defaultCheck2">
-                    <label class="form-check-label" for="defaultCheck2">
-                        User
-                    </label>
-                </div>
-            </div>
-            <div class="col-6">
-                <button class="btn-success">Search</button>
+            <div class="form-check d-inline">
+                {{ Form::radio(
+                        'isTeacher',
+                        0,
+                        $searchCondition->getIsTeacher() == 0 ? true : false,
+                        ['id' => 'user']
+                    ) }}
+                {{ Form::label('user', 'User') }}
             </div>
         </div>
-
-    </form>
+        <div class="col-6">
+            {{ Form::button('Search', ['type' => 'submit']) }}
+        </div>
+    </div>
+    {{ Form::close() }}
     <table class="table">
         <thead class="thead-dark">
             <tr>
                 <th scope="col">#</td>
                 <th scope="col">Name</td>
                 <th scope="col">Email</td>
-                <th scope="col">Role</td>
+                    {{-- <th scope="col">Roles</td> --}}
                 <th scope="col">Setting</td>
             </tr>
         </thead>
         <tbody>
+            @foreach ($users['items'] as $key => $user)
             <tr>
-                <td>1</td>
-                <td><a href="#">Tay</a></td>
-                <td>nguyenthanhtay90@gmail.com</td>
-                <td>Super Admin</td>
-                <td><button class="btn-secondary">Lock</button></td>
+                <td>{{ $users['firstItem'] + $key }}</td>
+                <td><a href="#">{{ $user->getName()}}</a></td>
+                <td>{{ $user->getEmail( )}}</td>
+                {{-- <td>Super Admin</td> --}}
+                <td>
+                    {{ Form::button(
+                        $user->getStatusShown(),
+                        [
+                            'class' => 'btn-secondary text-capitalize update-user-status',
+                            'data-id' => $user->getId(),
+                            'data-status' => $user->getStatusShown(),
+                            'id' => 'status-user-' . $user->getId()
+                        ]
+                    ) }}
+                    <a href="{{ route('userAdmin.controlUser', ['id' => $user->getId()])}}" class="px-2"><i
+                            class="fa fa-cog" aria-hidden="true"></i></a>
+                </td>
             </tr>
-            <tr>
-                <td>2</td>
-                <td><a href="#">Tay</a></td>
-                <td>nguyenthanhtay90@gmail.com</td>
-                <td>Super Admin</td>
-                <td><button class="btn-secondary">Lock</button></td>
-            </tr>
-            <tr>
-                <td>2</td>
-                <td><a href="#">Tay</a></td>
-                <td>nguyenthanhtay90@gmail.com</td>
-                <td>Super Admin</td>
-                <td><button class="btn-secondary">Lock</button></td>
-            </tr>
+            @endforeach
         </tbody>
     </table>
     <nav aria-label="...">
-        <ul class="pagination">
-            <li class="page-item disabled">
-                <span class="page-link">Previous</span>
-            </li>
-            <li class="page-item"><a class="page-link" href="#">1</a></li>
-            <li class="page-item active">
-                <span class="page-link">
-                    2
-                    <span class="sr-only">(current)</span>
-                </span>
-            </li>
-            <li class="page-item"><a class="page-link" href="#">3</a></li>
-            <li class="page-item">
-                <a class="page-link" href="#">Next</a>
-            </li>
-        </ul>
+        {{ $users['pagination']}}
     </nav>
+    {{ csrf_field() }}
+    {{ Form::hidden('url', route("adminUser.updateStatusUser")) }}
+
+    <script src="{{ Module::asset('backend:js/user.js') }}"></script>
 </div>
 @endsection

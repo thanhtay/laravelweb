@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateAdminRolesTable extends Migration
+class CreateClassesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,9 @@ class CreateAdminRolesTable extends Migration
      */
     public function up()
     {
-        Schema::create('admin_roles', function (Blueprint $table) {
+        Schema::create('classes', function (Blueprint $table) {
             $table->increments('id')->unsigned(false);
             $table->string('name', 250)->unique();
-            $table->boolean('level')->unique()->comment('1 is highest level (super admin)');
             $table->integer('created_at');
             $table->integer('updated_at');
         });
@@ -29,6 +28,6 @@ class CreateAdminRolesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('admin_roles');
+        Schema::dropIfExists('classes');
     }
 }

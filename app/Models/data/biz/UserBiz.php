@@ -48,18 +48,5 @@ class UserBiz extends Model
         return $this->roles;
     }
 
-    public function getAdminRoles()
-    {
-        switch ($this->getIsAdmin()) {
-            case 1:
-                return "Super Admin";
-                break;
-            case 2:
-                return "Admin";
-                break;
-            default:
-                return "User";
-                break;
-        }
-    }
+    
 }

@@ -2,11 +2,18 @@
 
 namespace Modules\Backend\Http\Models\data\biz;
 
-use App\Models\data\biz\UserBiz;
-
-
-class AdminBiz extends UserBiz
+class AdminBiz extends UserAdminBiz
 {
+    protected $fillable = ['id', 'name', 'email', 'updated_at', 'status', 'isAdmin'];
+
+    /**
+     * Get the value of isAdmin
+     */
+    public function getIsAdmin()
+    {
+        return $this->isAdmin;
+    }
+
     public function getAdminRoles()
     {
         switch ($this->getIsAdmin()) {

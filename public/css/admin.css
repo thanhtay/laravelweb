@@ -70,9 +70,11 @@
     #sidebar {
         margin-left: -250px;
     }
+
     #sidebar.active {
         margin-left: 0;
     }
+
     #sidebarCollapse span {
         display: none;
     }
@@ -80,4 +82,12 @@
 
 .hidden {
     display: none;
+}
+
+ul.list_class li{
+    display: inline;
+}
+
+ul.list_permission li{
+    display: inline;
 }

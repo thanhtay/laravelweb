@@ -5,7 +5,8 @@ namespace Modules\Backend\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
-use Modules\Backend\Http\Models\logic\UserAdminModel;
+use Modules\Backend\Http\Models\data\form\AdministratorForm;
+use Modules\Backend\Http\Models\logic\AdminUserModel;
 
 class AdminController extends Controller
 {
@@ -23,9 +24,15 @@ class AdminController extends Controller
      *
      * @return void
      */
-    public function createAdmin()
+    public function createAdmin(Request $request)
     {
-        echo "This is create admin page. Welcome to super admin!";
+        $model = new AdminUserModel();
+        if ($request->isMethod('post')) {
+            $form = new AdministratorForm($request->input());
+            $model->createAdmin($form);
+            return redirect(action('AdminController@listAdmin'));
+        }
+        return view('backend::admin.create_admin');
     }
 
     /**
@@ -35,7 +42,7 @@ class AdminController extends Controller
      */
     public function listAdmin()
     {
-        $model = new UserAdminModel();
+        $model = new AdminUserModel();
         $listAdmin = $model->getListAdmin();
         $data = [
             'admins' => $listAdmin,
@@ -51,6 +58,15 @@ class AdminController extends Controller
     public function controlAdmin()
     {
         echo "Control admin page. Welcome to super admin!";
+    }
+
+    public function updateStatusAdmin(Request $request)
+    {
+        $model = new AdminUserModel();
+        $id = $request->input('id');
+        $result = $model->changeStatusAdmin($id);
+
+        return json_encode($result);
     }
 
 }

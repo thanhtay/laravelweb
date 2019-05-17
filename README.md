@@ -106,4 +106,18 @@
 						$decrypted = \openssl_decrypt(
 							$payload['value'], $this->cipher, $this->key, 0, $iv
 						); a7CuYbkB4irKAwiFAbpJeYsEQmupfXqwTO10BIyv this is name of session file
-						
+- Form
+    + composer require laravelcollective/html
+    + config\app.php
+        providers' => [
+            // ...
+            Collective\Html\HtmlServiceProvider::class,
+            // ...
+        ],
+        
+        'aliases' => [
+            // ...
+            'Form' => Collective\Html\FormFacade::class,
+            'Html' => Collective\Html\HtmlFacade::class,
+            // ...
+        ],

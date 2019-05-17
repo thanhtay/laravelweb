@@ -18,16 +18,20 @@
             </tr>
         </thead>
         <tbody>
-            @foreach ($admins as $item)
-                <tr>
-                    <td>{{ $item->getId() }}</td>
-                    <td><a href="#">{{ $item->getName() }}</a></td>
-                    <td>{{ $item->getEmail() }}</td>
-                    <td>{{ $item->getAdminRoles() }}</td>
-                    <td><button class="btn-secondary">Lock</button></td>
-                </tr>
+            @foreach ($admins as $admin)
+            <tr>
+                <td>{{ $admin->getId() }}</td>
+                <td><a href="#">{{ $admin->getName() }}</a></td>
+                <td>{{ $admin->getEmail() }}</td>
+                <td>{{ $admin->getAdminRoles() }}</td>
+                <td><button id="status-admin-{{ $admin->getId() }}" class="btn-secondary update-admin-status"
+                        data-id="{{ $admin->getId()}}">{{ $admin->getStatusShown()}}</button></td>
+            </tr>
             @endforeach
         </tbody>
     </table>
+    {{ csrf_field() }}
+    {{ Form::hidden('url', route("admin.updateStatusAdmin")) }}
 </div>
+<script src="{{ Module::asset('backend:js/admin.js') }}"></script>
 @endsection
