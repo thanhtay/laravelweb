@@ -2,8 +2,8 @@
 
 namespace Modules\Backend\Http\Middleware;
 
-use Illuminate\Auth\Middleware\Authenticate as Middleware;
 use Closure;
+use Illuminate\Auth\Middleware\Authenticate as Middleware;
 
 class Admin extends Middleware
 {
@@ -15,7 +15,7 @@ class Admin extends Middleware
      */
     protected function redirectTo($request)
     {
-        if (! $request->expectsJson()) {
+        if (!$request->expectsJson()) {
             return route('login');
         }
     }
@@ -32,14 +32,16 @@ class Admin extends Middleware
      */
     public function handle($request, Closure $next, ...$guards)
     {
+        $this->authenticate($request, $guards);
+
         // super admin
-        if($this->auth->user()->isAdmin === 1) {
+        if (1 === $this->auth->user()->isAdmin) {
             return $next($request);
         }
-        if($this->auth->user()->isAdmin) {
+        if ($this->auth->user()->isAdmin) {
             return $next($request);
         }
-        return redirect('home');
+        return abort(404);
     }
-    
+
 }

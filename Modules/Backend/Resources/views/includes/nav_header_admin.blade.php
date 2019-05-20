@@ -9,9 +9,9 @@
         <h3>Admin Page</h3>
     </div>
     <ul class="list-unstyled components">
-            <li>
-                    <a href="{{ route("home") }}">Home</a>
-                </li>
+        <li>
+            <a href="{{ route("home") }}">Home</a>
+        </li>
         <li>
             <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="true" class="dropdown-toggle">Admin
                 Management</a>
@@ -37,7 +37,13 @@
             <a href="#">Setting</a>
         </li>
         <li>
-            <a href="#">Logout</a>
+            <a href="{{ route('logout') }}" onclick="event.preventDefault();
+                                                    document.getElementById('logout-form').submit();">
+                {{ __('Logout') }}
+            </a>
+            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                @csrf
+            </form>
         </li>
     </ul>
 </nav>

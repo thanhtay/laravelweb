@@ -1,4 +1,4 @@
-<footer class="bg-dark text-white pt-5 pb-4">
+<footer class="bg-dark text-white pt-5 pb-4 navbar-fixed-bottom">
     <div class="container">
         <div class="row border-bottom border-success pb-2">
             <div class="col-5">

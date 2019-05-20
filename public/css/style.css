@@ -12,32 +12,31 @@ a:hover {
 }
 
 img {
-  max-width: 100%;
+    max-width: 100%;
 }
-ul {
-  /* margin: 0 auto; */
-  /* padding: 0; */
-}
+
 li {
-  list-style-type: none; 
+    list-style-type: none;
 }
+
 @media (min-width: 320px) {
-  .display-3 {
-    font-size: 1.5rem;
-  }
+    .display-3 {
+        font-size: 1.5rem;
+    }
 }
+
 /* Small devices (landscape phones, 576px and up) */
 @media (min-width: 576px) {
-  .display-3 {
-    font-size: 2.5rem;
-  }
+    .display-3 {
+        font-size: 2.5rem;
+    }
 }
 
 /* Medium devices (tablets, 768px and up) */
 @media (min-width: 768px) {
-  .display-3 {
-    font-size: 4.5rem;
-  }
+    .display-3 {
+        font-size: 4.5rem;
+    }
 }
 
 /* Large devices (desktops, 992px and up) */
@@ -62,26 +61,33 @@ li {
 
 
 .summary-content {
-  display: block;
+    display: block;
     display: -webkit-box;
     -webkit-box-orient: vertical;
     overflow: hidden;
     text-overflow: ellipsis;
 }
 
+.fa-cog {
+    font-size: 22px;
+}
 
 .line-content-3 {
-  -webkit-line-clamp: 3;
+    -webkit-line-clamp: 3;
 }
 
 .line-content-4 {
-  -webkit-line-clamp: 4;
+    -webkit-line-clamp: 4;
 }
 
 footer {
-  font-size: 15px;
+    font-size: 15px;
 }
 
 footer .fa {
-  font-size: 22px !important;
+    font-size: 22px !important;
+}
+
+.container-title-top {
+    border-top: 1px #28a745 solid;
 }

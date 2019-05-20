@@ -20,9 +20,11 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function () {
     Route::get('/list-user', 'AdminUserController@listUser')->name('userAdmin.listUser');
     Route::get('/user/control-user/{id}', 'AdminUserController@controlUser')->name('userAdmin.controlUser');
     Route::post('/user/control-user/{id}', 'AdminUserController@controlUser')->name('userAdmin.controlUser');
+    Route::post('/user/update-status-user', 'AdminUserController@updateStatusUser')->name('adminUser.updateStatusUser');
+
     Route::get('/course/list-course', 'AdminCourseController@listCourse')->name('adminCourse.listCourse');
     Route::post('/course/update-status', 'AdminCourseController@updateStatus')->name('adminCourse.updateStatus');
-    Route::post('/user/update-status-user', 'AdminUserController@updateStatusUser')->name('adminUser.updateStatusUser');
+    Route::get('/course/control-course/{id}', 'AdminCourseController@controlCourse')->name('course.controlCourse');
 
 });
 

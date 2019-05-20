@@ -34,4 +34,10 @@ class AdminCourseController extends Controller
 
         return json_encode($result);
     }
+
+    public function controlCourse($id)
+    {
+        $data = [];
+        return view('backend::course.info', $data);
+    }
 }

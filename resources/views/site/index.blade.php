@@ -1,4 +1,7 @@
 @extends('layouts.site')
+@section('silder')
+@include('includes.silder_header')
+@endsection
 @section('content')
 <!-- Welcome -->
 <section class="mt-5">

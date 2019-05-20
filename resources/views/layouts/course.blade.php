@@ -29,12 +29,9 @@
     <header>
         <!-- Navbar -->
         @include('includes.nav_header')
-        <!-- Carousel -->
-        @yield('silder')
     </header>
     <main>
         @yield('content')
     </main>
-    @include('includes.footer')
 </body>
 </html>

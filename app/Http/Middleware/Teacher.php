@@ -1,11 +1,10 @@
 <?php
-
-namespace Modules\Backend\Http\Middleware;
+namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Auth\Middleware\Authenticate as Middleware;
 
-class SuperAdmin extends Middleware
+class Teacher extends Middleware
 {
     /**
      * Get the path the user should be redirected to when they are not authenticated.
@@ -33,9 +32,19 @@ class SuperAdmin extends Middleware
     public function handle($request, Closure $next, ...$guards)
     {
         $this->authenticate($request, $guards);
+
+        // super admin
         if (1 === $this->auth->user()->isAdmin) {
             return $next($request);
         }
+        if ($this->auth->user()->isAdmin) {
+            return $next($request);
+        }
+        if ($this->auth->user()->isTeacher) {
+            return $next($request);
+        }
+
         return abort(404);
     }
+
 }

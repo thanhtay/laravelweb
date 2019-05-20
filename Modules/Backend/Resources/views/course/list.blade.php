@@ -60,6 +60,8 @@
                             'id' => 'status-course-' . $course->getId()
                         ]
                     ) }}
+                    {{-- <a href="{{ route('course.controlCourse', ['id' => $course->getId()])}}" class="px-2"><i
+                        class="fa fa-cog" aria-hidden="true"></i></a> --}}
                 </td>
             </tr>
             @endforeach

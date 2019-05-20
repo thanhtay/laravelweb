@@ -1,8 +1,8 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
 class CreateSubjectsClassesTable extends Migration
 {
@@ -18,7 +18,9 @@ class CreateSubjectsClassesTable extends Migration
             $table->integer('id_class');
             $table->integer('id_subject');
             $table->index(['id_class', 'id_subject']);
+            $table->boolean('status')->default(0)->comment('0 is unactive | 1 is active');
             $table->integer('created_at');
+            $table->integer('updated_at');
             $table->foreign('id_class')
                 ->references('id')->on('classes')
                 ->onDelete('cascade');
