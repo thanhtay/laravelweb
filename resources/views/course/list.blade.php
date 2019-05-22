@@ -17,77 +17,19 @@
             </tr>
         </thead>
         <tbody>
+            @foreach ($courses['items'] as $key => $course)
             <tr>
-                <td>1</td>
-                <td><a href="#">Lesson 1</a></td>
-                <td>2019-05-20 10:30:10</td>
-                <td>2019-05-20 10:30:10</td>
-                <td><a href="" class="px-2"><i class="fa fa-cog" aria-hidden="true"></i></a></td>
+                <td>{{ $courses['firstItem'] + $key }}</td>
+                <td><a href="#">{{ $course->getNameCourse() }}</a></td>
+                <td>{{ $course->getCreatedAt() }}</td>
+                <td>{{ $course->getUpdatedAt() }}</td>
+                <td><a href="{{ route('course.info', ['id' => $course->getId()])}}" class="px-2" target="_bank"><i class="fa fa-cog" aria-hidden="true"></i></a></td>
             </tr>
-            <tr>
-                <td>2</td>
-                <td><a href="#">Lesson 2</a></td>
-                <td>2019-05-20 10:30:10</td>
-                <td>2019-05-20 10:30:10</td>
-                <td><a href="" class="px-2"><i class="fa fa-cog" aria-hidden="true"></i></a></td>
-            </tr>
-            <tr>
-                <td>3</td>
-                <td><a href="#">Lesson 3</a></td>
-                <td>2019-05-20 10:30:10</td>
-                <td>2019-05-20 10:30:10</td>
-                <td><a href="" class="px-2"><i class="fa fa-cog" aria-hidden="true"></i></a></td>
-            </tr>
-            <tr>
-                <td>4</td>
-                <td><a href="#">Lesson 4</a></td>
-                <td>2019-05-20 10:30:10</td>
-                <td>2019-05-20 10:30:10</td>
-                <td><a href="" class="px-2"><i class="fa fa-cog" aria-hidden="true"></i></a></td>
-            </tr>
-            <tr>
-                <td>5</td>
-                <td><a href="#">Lesson 5</a></td>
-                <td>2019-05-20 10:30:10</td>
-                <td>2019-05-20 10:30:10</td>
-                <td><a href="" class="px-2"><i class="fa fa-cog" aria-hidden="true"></i></a></td>
-            </tr>
-            {{-- <tr>
-                <td>6</td>
-                <td><a href="#">Lesson 6</a></td>
-                <td>2019-05-20 10:30:10</td>
-                <td>2019-05-20 10:30:10</td>
-                <td><a href="" class="px-2"><i class="fa fa-cog" aria-hidden="true"></i></a></td>
-            </tr>
-            <tr>
-                <td>7</td>
-                <td><a href="#">Lesson 7</a></td>
-                <td>2019-05-20 10:30:10</td>
-                <td>2019-05-20 10:30:10</td>
-                <td><a href="" class="px-2"><i class="fa fa-cog" aria-hidden="true"></i></a></td>
-            </tr>
-            <tr>
-                <td>8</td>
-                <td><a href="#">Lesson 8</a></td>
-                <td>2019-05-20 10:30:10</td>
-                <td>2019-05-20 10:30:10</td>
-                <td><a href="" class="px-2"><i class="fa fa-cog" aria-hidden="true"></i></a></td>
-            </tr>
-            <tr>
-                <td>9</td>
-                <td><a href="#">Lesson 9</a></td>
-                <td>2019-05-20 10:30:10</td>
-                <td>2019-05-20 10:30:10</td>
-                <td><a href="" class="px-2"><i class="fa fa-cog" aria-hidden="true"></i></a></td>
-            </tr>
-            <tr>
-                <td>10</td>
-                <td><a href="#">Lesson 10</a></td>
-                <td>2019-05-20 10:30:10</td>
-                <td>2019-05-20 10:30:10</td>
-                <td><a href="" class="px-2"><i class="fa fa-cog" aria-hidden="true"></i></a></td>
-            </tr> --}}
+            @endforeach
         </tbody>
     </table>
+    <nav aria-label="...">
+        {{ $courses['pagination']}}
+    </nav>
 </div>
 @endsection

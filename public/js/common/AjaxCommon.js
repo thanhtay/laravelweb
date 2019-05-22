@@ -32,14 +32,21 @@ function AjaxCommon(opts) {
                 that.callback(result);
                 
             },
-            complete: function() {
+            complete: function(result, textStatus) {
                 that.options.is_loading = false;
-            }
+            },
+            error: function (result, error) {
+                that.callError(result)
+            },
         });
     }
 
     this.callback = function(result) {
 
+    }
+
+    this.callError = function(result) {
+        alert(result.responseJSON.message);
     }
 
     this.init(opts);

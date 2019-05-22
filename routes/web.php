@@ -21,4 +21,12 @@ Auth::routes();
 
 Route::group(['prefix' => 'course', 'middleware' => 'teacher'], function () {
     Route::get('management', 'CourseController@management')->name('course.management');
+    Route::get('info/{id}', 'CourseController@info')->name('course.info');
+});
+
+Route::group(['prefix' => 'lesson', 'middleware' => 'teacher'], function () {
+    Route::post('create', 'LessonController@create')->name('lesson.create');
+    Route::post('edit', 'LessonController@edit')->name('lesson.edit');
+    Route::post('delete', 'LessonController@delete')->name('lesson.delete');
+    Route::get('info/{id}', 'LessonController@info')->name('lesson.info');
 });

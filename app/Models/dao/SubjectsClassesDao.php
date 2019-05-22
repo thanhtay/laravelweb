@@ -38,4 +38,22 @@ class SubjectsClassesDao extends Model
 
         return $table->get();
     }
+
+    public function getInfo($id, $isAdmin)
+    {
+        $table = DB::table('subjects_classes as sc');
+        $table->select('sc.*', 's.name as subject_name', 'c.name as class_name');
+        $table->join('subjects as s', 'sc.id_subject', '=', 's.id');
+        $table->join('classes as c', 'sc.id_class', '=', 'c.id');
+        $table->where('sc.status', 1);
+        $table->where('sc.id', $id);
+        if ($isAdmin) {
+
+        } else {
+            $table->join('user_courses_permissions as pm', 'sc.id', '=', 'pm.id_course');
+            $table->where('pm.id_user', $id);
+        }
+        return $table->first();
+
+    }
 }

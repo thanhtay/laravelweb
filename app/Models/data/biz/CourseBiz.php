@@ -5,7 +5,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class CourseBiz extends Model
 {
-    protected $fillable = ['id', 'class_name', 'subject_name', 'created_at', 'status'];
+    protected $fillable = ['id', 'class_name', 'subject_name', 'created_at', 'updated_at', 'status'];
+
+    public $timestamps = false;
 
     public function getId()
     {
@@ -29,5 +31,15 @@ class CourseBiz extends Model
         } else {
             return 'unactive';
         }
+    }
+
+    public function getCreatedAt()
+    {
+        return date('Y-m-d H:i:s', $this->created_at);
+    }
+
+    public function getUpdatedAt()
+    {
+        return date('Y-m-d H:i:s', $this->updated_at);
     }
 }
