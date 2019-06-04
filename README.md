@@ -16,3 +16,5 @@
         }
 - Module
     nwidart/laravel-modules
+    php artisan vendor:publish --provider="Nwidart\Modules\LaravelModulesServiceProvider"
+    composer dump-autoload
