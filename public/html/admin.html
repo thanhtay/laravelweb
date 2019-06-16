@@ -1,0 +1,254 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Admin</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/admin.css">
+</head>
+
+<body>
+    <div class="wrapper">
+        <!-- Sidebar  -->
+        <nav id="sidebar" class="">
+            <div class="sidebar-header">
+                <button type="button" class="close controlMenu" aria-label="Close">
+                    <i class="fa fa-window-close" aria-hidden="true"></i>
+                </button>
+                <h3>Admin Page</h3>
+            </div>
+            <ul class="list-unstyled components">
+                <li class="active">
+                    <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="true" class="dropdown-toggle">Admin
+                        Management</a>
+                    <ul class="list-unstyled collapse bg-info" id="pageSubmenu" style="bg">
+                        <li>
+                            <a href="#">Create Admin</a>
+                        </li>
+                        <li>
+                            <a href="#">List Admin</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">User Management</a>
+                </li>
+                <li>
+                    <a href="#">Courses</a>
+                </li>
+                <li>
+                    <a href="#">News</a>
+                </li>
+                <li>
+                    <a href="#">Setting</a>
+                </li>
+                <li>
+                    <a href="#">Logout</a>
+                </li>
+            </ul>
+        </nav>
+
+        <!-- Page Content  -->
+        <div id="content" class="ml-3">
+            <nav class="navbar navbar-expand-lg navbar-light bg-light h5" style="height: 55px;">
+                <button id="contentControlMenu" type="button" class="btn btn-info controlMenu hidden">
+                    <i class="fa fa-align-left" aria-hidden="false"></i>
+                </button>
+                <!-- <ul class="navbar-nav ml-auto">
+                    <li class="nav-item active px-2">
+                        <a class="nav-link" href="#">About <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item dropdown px-2">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Courses
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="#">Primary</a>
+                            <a class="dropdown-item" href="#">Secondary</a>
+                            <a class="dropdown-item" href="#">High school</a>
+                        </div>
+                    </li>
+                    <li class="nav-item px-2">
+                        <a class="nav-link" href="#">Events</a>
+                    </li>
+                    <li class="nav-item px-2">
+                        <a class="nav-link" href="#">News</a>
+                    </li>
+                    <li class="nav-item px-2">
+                        <a class="nav-link" href="#">Contact</a>
+                    </li>
+                    <li class="nav-item px-2">
+                        <a class="nav-link" href="#">Login</a>
+                    </li>
+                    <li class="nav-item px-2">
+                        <a class="nav-link" href="#">Register</a>
+                    </li>
+                </ul> -->
+            </nav>
+            <!-- list admin -->
+            <div class="container-fluid">
+                <div class="row mb-2">
+                    <div class="col">
+                        <h2>List Admin</h2>
+                    </div>
+                </div>
+                <table class="table">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th scope="col">#</td>
+                            <th scope="col">Name</td>
+                            <th scope="col">Email</td>
+                            <th scope="col">Role</td>
+                            <th scope="col">Setting</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td><a href="#">Tay</a></td>
+                            <td>nguyenthanhtay90@gmail.com</td>
+                            <td>Super Admin</td>
+                            <td><button class="btn-secondary">Lock</button></td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td><a href="#">Tay</a></td>
+                            <td>nguyenthanhtay90@gmail.com</td>
+                            <td>Super Admin</td>
+                            <td><button class="btn-secondary">Lock</button></td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td><a href="#">Tay</a></td>
+                            <td>nguyenthanhtay90@gmail.com</td>
+                            <td>Super Admin</td>
+                            <td><button class="btn-secondary">Lock</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <!-- list User -->
+            <div class="container-fluid">
+                <div class="row mb-2">
+                    <div class="col">
+                        <h2>List User</h2>
+                    </div>
+                </div>
+                <form class="mb-3 px-4" action="">
+                    <div class="row">
+                        <div class="col-6">
+                            <label for="inputEmail3" class="col-form-label">Name</label>
+                            <input type="email" class="form-control" id="inputEmail3" placeholder="Name">
+                        </div>
+                        <div class="col-6">
+                            <label for="inputEmail3" class="col-form-label">Email</label>
+                            <input type="email" class="form-control" id="inputEmail3" placeholder="Email">
+                        </div>
+                        <div class="w-100 mt-3"></div>
+                        <div class="col-6">
+                            <div class="form-check d-inline">
+                                <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                                <label class="form-check-label" for="defaultCheck1">
+                                    Teacher
+                                </label>
+                            </div>
+                            <div class="form-check d-inline">
+                                <input class="form-check-input" type="checkbox" value="" id="defaultCheck2">
+                                <label class="form-check-label" for="defaultCheck2">
+                                    User
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <button class="btn-success">Search</button>
+                        </div>
+                    </div>
+
+                </form>
+                <table class="table">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th scope="col">#</td>
+                            <th scope="col">Name</td>
+                            <th scope="col">Email</td>
+                            <th scope="col">Role</td>
+                            <th scope="col">Setting</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td><a href="#">Tay</a></td>
+                            <td>nguyenthanhtay90@gmail.com</td>
+                            <td>Super Admin</td>
+                            <td><button class="btn-secondary">Lock</button></td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td><a href="#">Tay</a></td>
+                            <td>nguyenthanhtay90@gmail.com</td>
+                            <td>Super Admin</td>
+                            <td><button class="btn-secondary">Lock</button></td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td><a href="#">Tay</a></td>
+                            <td>nguyenthanhtay90@gmail.com</td>
+                            <td>Super Admin</td>
+                            <td><button class="btn-secondary">Lock</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <nav aria-label="...">
+                    <ul class="pagination">
+                        <li class="page-item disabled">
+                            <span class="page-link">Previous</span>
+                        </li>
+                        <li class="page-item"><a class="page-link" href="#">1</a></li>
+                        <li class="page-item active">
+                            <span class="page-link">
+                                2
+                                <span class="sr-only">(current)</span>
+                            </span>
+                        </li>
+                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                        <li class="page-item">
+                            <a class="page-link" href="#">Next</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
+    </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+    </script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('.controlMenu').on('click', function () {
+                $('#sidebar').toggleClass('active');
+                $('#contentControlMenu').toggleClass('hidden');
+            });
+        });
+
+    </script>
+</body>
+
+</html>

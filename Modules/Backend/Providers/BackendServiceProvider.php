@@ -26,6 +26,9 @@ class BackendServiceProvider extends ServiceProvider
         $this->registerViews();
         $this->registerFactories();
         $this->loadMigrationsFrom(__DIR__ . '/../Database/Migrations');
+
+        $this->app->make('router')->aliasMiddleware('admin', \Modules\Backend\Http\Middleware\Admin::class);
+        $this->app->make('router')->aliasMiddleware('superAdmin', \Modules\Backend\Http\Middleware\SuperAdmin::class);
     }
 
     /**

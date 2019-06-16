@@ -19,6 +19,15 @@ function v($string)
 {
     var_dump($string);
 }
+
+function vv($string)
+{
+    var_dump($string);
+    die;
+}
+
+require __DIR__.'/design_patten.php';
+
 /**
  * Laravel - A PHP Framework For Web Artisans
  *

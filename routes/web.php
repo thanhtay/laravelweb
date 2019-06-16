@@ -9,54 +9,24 @@
 | routes are loaded by the RouteServiceProvider within a group which
 | contains the "web" middleware group. Now create something great!
 |
-*/
+ */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
-
-Route::get('post', [
-    'as' => 'My Post',
-    function () {
-        return 'welcome post';
-    }
-]);
-
-Route::get('Review routes laravel', function () {
-    return redirect()->route('My Post');
-});
-
-
-Route::get('news', function () {
-    return "welcome news";
-})->name('My News');
-
-Route::get('The weather is cool', function () {
-    return redirect()->route('My News');
-});
-
-
-Route::group(['prefix' => 'group'], function () {
-    Route::get('team1', function () {
-        return "Welcome Team 1";
-    });
-
-    Route::get('team2', function () {
-        return "Welcome Team 2";
-    });
-});
+Route::get('/', 'SiteController@index')->name('home');
 
 Route::group(['prefix' => 'site'], function () {
-    Route::get('/', 'SiteController@index');
-    Route::get('read', 'SiteController@read');
     Route::get('about', 'SiteController@about');
-
-    Route::match(['get','post'], 'contact', 'SiteController@contact')->name('siteContact');
-
-    Route::get('site/{id}', 'SiteController@index');
+    Route::match(['get', 'post'], 'contact', 'SiteController@contact')->name('siteContact');
 });
-
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::group(['prefix' => 'course', 'middleware' => 'teacher'], function () {
+    Route::get('management', 'CourseController@management')->name('course.management');
+    Route::get('info/{id}', 'CourseController@info')->name('course.info');
+});
+
+Route::group(['prefix' => 'lesson', 'middleware' => 'teacher'], function () {
+    Route::post('create', 'LessonController@create')->name('lesson.create');
+    Route::post('edit', 'LessonController@edit')->name('lesson.edit');
+    Route::post('delete', 'LessonController@delete')->name('lesson.delete');
+    Route::get('info/{id}', 'LessonController@info')->name('lesson.info');
+});
